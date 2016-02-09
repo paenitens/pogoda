@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">pogoda</string>
+    <string name="key">7515b490e71909bcb0dc1fbcbfff86cc</string>
+    <string name="error">Brak danych.</string>
+</resources>
