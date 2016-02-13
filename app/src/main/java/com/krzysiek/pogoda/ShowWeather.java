@@ -3,7 +3,6 @@ package com.krzysiek.pogoda;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -17,7 +16,7 @@ public class ShowWeather extends Activity {
     TextView cityField;
     TextView detailsField;
     TextView currentTemperatureField;
-    
+
     private ProgressBar spinner;
 
     @Override
