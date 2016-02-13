@@ -17,8 +17,7 @@ public class ShowWeather extends Activity {
     TextView cityField;
     TextView detailsField;
     TextView currentTemperatureField;
-
-    Handler handler;
+    
     private ProgressBar spinner;
 
     @Override
@@ -28,31 +27,30 @@ public class ShowWeather extends Activity {
 
         spinner = (ProgressBar)findViewById(R.id.progressBar1);
 
-        handler = new Handler();
-
         cityField = (TextView)findViewById(R.id.city_field);
         detailsField = (TextView)findViewById(R.id.details_field);
         currentTemperatureField = (TextView)findViewById(R.id.current_temperature_field);
 
         String city = getIntent().getStringExtra("city");
-        spinner.setVisibility(View.VISIBLE);
         updateWeatherData(city);
     }
+
 
     private void updateWeatherData(final String city){
         new Thread(){;
             public void run(){
+                spinner.setVisibility(View.VISIBLE);
                 final JSONObject json = GetData.getJSON(ShowWeather.this, city);
                 if(json == null){
-                    handler.post(new Runnable(){
-                        public void run(){
+                    ShowWeather.this.runOnUiThread(new Runnable() {
+                        public void run() {
                             Toast.makeText(ShowWeather.this,
                                     ShowWeather.this.getString(R.string.error),
                                     Toast.LENGTH_LONG).show();
                         }
                     });
                 } else {
-                    handler.post(new Runnable(){
+                    ShowWeather.this.runOnUiThread(new Runnable(){
                         public void run(){
                             renderWeather(json);
                             spinner.setVisibility(View.GONE);

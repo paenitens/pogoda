@@ -22,23 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
             public void onItemClick(AdapterView arg0, View arg1, int pos, long arg3) {
 
-                switch (pos) {
-                    case 0:
-                        Intent startActivityCustomList = new Intent(MainActivity.this, ShowWeather.class);
-                        startActivityCustomList.putExtra("city", cities[0]);
-                        startActivity(startActivityCustomList);
-                        break;
-                    case 1:
-                        Intent startActivityCustomList1 = new Intent(MainActivity.this, ShowWeather.class);
-                        startActivityCustomList1.putExtra("city", cities[1]);
-                        startActivity(startActivityCustomList1);
-                        break;
-                    case 2:
-                        Intent startActivityCustomList2 = new Intent(MainActivity.this, ShowWeather.class);
-                        startActivityCustomList2.putExtra("city", cities[2]);
-                        startActivity(startActivityCustomList2);
-                        break;
-                }
+                Intent startActivityCustomList = new Intent(MainActivity.this, ShowWeather.class);
+                startActivityCustomList.putExtra("city", cities[pos]);
+                startActivity(startActivityCustomList);
             }
         });
     }
